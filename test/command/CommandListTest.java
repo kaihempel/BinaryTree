@@ -16,7 +16,6 @@
  */
 package command;
 
-import java.util.regex.Pattern;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -55,13 +54,13 @@ public class CommandListTest {
     @Test
     public void testRegisterCommand() {
         System.out.println("registerCommand");
-        String name = "";
+
+        String name = "Test";
         CommandList instance = new CommandList();
-        CommandList expResult = null;
         CommandList result = instance.registerCommand(name);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        assertEquals(instance, result);
+
     }
 
     /**
@@ -70,13 +69,22 @@ public class CommandListTest {
     @Test
     public void testIsInList() {
         System.out.println("isInList");
-        String commandName = "";
+
+        String commandName = "test";
+
         CommandList instance = new CommandList();
+
         boolean expResult = false;
         boolean result = instance.isInList(commandName);
+
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        instance.registerCommand(commandName);
+
+        expResult = true;
+        result = instance.isInList(commandName);
+
+        assertEquals(expResult, result);
     }
 
 }
